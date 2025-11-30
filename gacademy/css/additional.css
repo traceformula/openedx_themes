@@ -450,6 +450,36 @@ footer#footer.ct-footer .ct-footer-widgets-area {
     background: transparent !important;
 }
 
+/* Ép tất cả chữ trong footer G Academy về màu sáng */
+footer#footer .gac-footer-wrapper,
+footer#footer .gac-footer-wrapper * {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+/* Các phần chữ phụ màu nhạt */
+footer#footer .gac-footer-cta-text,
+footer#footer .gac-footer-brand-text,
+footer#footer .gac-footer-contact-value,
+footer#footer .gac-footer-links a {
+    color: #c9d4ff !important;
+}
+
+/* Tiêu đề footer */
+footer#footer .gac-footer-heading {
+    color: #ffffff !important;
+}
+
+/* Chữ highlight (AI & bán hàng, link hover...) */
+footer#footer .gac-footer-cta-title span {
+    color: #29e0ff !important;
+}
+
+/* Chữ màu vàng/cyan nếu bạn có */
+footer#footer .cyan { color: #29e0ff !important; }
+footer#footer .gold { color: #f5c542 !important; }
+
+
 /* (tuỳ chọn) tránh tràn ngang vì CSS khác */
 body {
     overflow-x: hidden;
