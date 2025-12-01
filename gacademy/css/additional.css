@@ -501,3 +501,566 @@ footer#footer .gold { color: #f5c542 !important; }
 body {
     overflow-x: hidden;
 }
+
+/* ====== NỀN HERO & VÒNG NEON ====== */
+
+.gacademy-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.gacademy-hero::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: conic-gradient(
+    from 180deg,
+    rgba(41, 224, 255, 0.4),
+    rgba(255, 45, 240, 0.4),
+    rgba(255, 220, 100, 0.3),
+    rgba(41, 224, 255, 0.4)
+  );
+  mix-blend-mode: screen;
+  opacity: 0.35;
+  animation: gacademy-rotate 18s linear infinite;
+  pointer-events: none;
+}
+@keyframes gacademy-rotate {
+  to { transform: rotate(360deg); }
+}
+
+/* ====== TEXT HERO ====== */
+
+.gac-master {
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #00ff99 !important;
+}
+
+.gac-livestream {
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.gac-trainer-line {
+  margin-top: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+/* ====== WRAP TRAINER ====== */
+
+.gac-trainer-wrap {
+  position: relative;
+  padding: 20px;
+}
+.gac-trainer-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: radial-gradient(circle at top, rgba(41,224,255,0.2), transparent),
+              radial-gradient(circle at bottom, rgba(255,45,240,0.2), transparent);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+  z-index: -1;
+}
+
+/* ====== TIÊU ĐỀ TÍM LỚN ====== */
+.gac-big-title {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .gacademy-hero {
+    min-height: 100vh;
+  }
+  .gacademy-hero .elementor-column {
+    width: 100% !important;
+  }
+}
+
+.gac-slider {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.gac-slider .swiper-slide {
+    height: 100vh;
+}
+
+/* Optional: căn dots đẹp hơn trên nền neon */
+.gac-slider .swiper-pagination-bullet {
+    opacity: 0.6;
+}
+.gac-slider .swiper-pagination-bullet-active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.gac-hide {
+    display: none !important;
+}
+
+/* CTA neon button */
+.gac-cta-btn a {
+    background: linear-gradient(90deg, #00d4ff, #29e0ff);
+    color: #000;
+    padding: 12px 26px !important;
+    border-radius: 999px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 0 18px rgba(41,224,255,0.6);
+    transition: 0.25s ease;
+}
+
+.gac-cta-btn a:hover {
+    box-shadow: 0 0 32px rgba(41,224,255,0.9);
+    transform: translateY(-2px);
+    text-decoration: none !important;
+}
+
+/* ===== G ACADEMY - Account dropdown (v2, dễ đọc hơn) ===== */
+
+/* Khung dropdown */
+.ct-header-account-dropdown {
+    background: linear-gradient(
+        180deg,
+        rgba(5, 0, 25, 0.98),
+        rgba(5, 0, 25, 0.96)
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 16px;
+    border: 1px solid rgba(41, 224, 255, 0.35);
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(41, 224, 255, 0.35);
+    padding: 16px 18px;
+    min-width: 260px;
+    color: #ffffff;
+}
+
+/* Hàng chứa tên + email */
+.ct-header-account-user-info .ct-menu-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+}
+
+/* Avatar tròn, viền nhẹ */
+.ct-header-account-user-info .ct-media-container img,
+.ct-header-account-user-info .ct-media-container .avatar {
+    border-radius: 999px;
+    border: 2px solid rgba(41, 224, 255, 0.75);
+}
+
+/* Khối text tên + email xếp dọc */
+.ct-header-account-user-info span {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Tên – to, trắng, rõ */
+.ct-header-account-user-info b {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* Email – nhỏ hơn, hơi mờ */
+.ct-header-account-user-info small {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Đường kẻ ngăn cách */
+.ct-header-account-divider {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    margin: 12px 0 8px;
+    list-style: none;
+}
+
+/* Các link: Tổng quan, Sửa hồ sơ, Đăng xuất */
+.ct-header-account-dropdown > li.menu-item > a.ct-menu-link {
+    display: block;
+    padding: 7px 8px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.18s ease;
+}
+
+/* Hover: nền tím sáng + chữ cyan */
+.ct-header-account-dropdown > li.menu-item > a.ct-menu-link:hover {
+    background: rgba(41, 224, 255, 0.14);
+    color: #29e0ff;
+    padding-left: 10px;
+}
+
+/* Canh dropdown */
+@media (min-width: 768px) {
+    .ct-header-account-dropdown {
+        transform: translateX(-10px);
+    }
+}
+
+/* ==== LOGIN MODAL – G ACADEMY STYLE ==== */
+
+/* Căn giữa & giới hạn chiều rộng form */
+#account-modal .ct-panel-content {
+  align-items: center;
+  justify-content: center;
+}
+
+#account-modal .ct-account-modal {
+  max-width: 440px;
+  width: 100%;
+  padding: 36px 40px;
+  border-radius: 24px;
+  background: rgba(6, 0, 30, 0.92);        /* kính mờ tối */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+}
+
+/* Tiêu đề & subtitle thêm bằng CSS */
+#account-modal .ct-account-modal::before {
+  content: "Đăng nhập G Academy";
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+#account-modal .ct-account-modal::after {
+  content: "Tiếp tục hành trình chinh phục AI của bạn";
+  display: block;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* Ẩn tiêu đề cũ (nếu có) để tránh trùng lặp */
+#account-modal .ct-account-modal h2,
+#account-modal .ct-account-modal .ct-modal-title {
+  display: none;
+}
+
+/* ===== INPUTS ===== */
+
+#account-modal .ct-account-modal form.login p {
+  margin-bottom: 18px;
+}
+
+#account-modal .ct-account-modal label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 6px;
+}
+
+#account-modal .ct-account-modal input[type="text"],
+#account-modal .ct-account-modal input[type="password"],
+#account-modal .ct-account-modal input[type="email"] {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(14, 0, 45, 0.8);
+  padding: 11px 16px;
+  font-size: 14px;
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+#account-modal .ct-account-modal input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+#account-modal .ct-account-modal input:focus {
+  border-color: #f5c542;
+  box-shadow: 0 0 0 1px rgba(245, 197, 66, 0.4);
+  background: rgba(14, 0, 60, 0.95);
+}
+
+/* ===== REMEMBER ME + FORGOT PASSWORD ===== */
+
+#account-modal .ct-account-modal .login-remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#account-modal .ct-account-modal .login-remember input[type="checkbox"] {
+  accent-color: #f5c542;
+}
+
+#account-modal .ct-account-modal .login-remember label {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+#account-modal .ct-account-modal .login-remember + p a,
+#account-modal .ct-account-modal .login p a {
+  font-size: 13px;
+  color: #29e0ff;
+  text-decoration: none;
+}
+
+#account-modal .ct-account-modal .login-remember + p a:hover,
+#account-modal .ct-account-modal .login p a:hover {
+  text-decoration: underline;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+
+#account-modal .ct-account-modal .login-submit {
+  margin-top: 16px;
+}
+
+#account-modal .ct-account-modal .login-submit input[type="submit"] {
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  cursor: pointer;
+  background-image: linear-gradient(90deg, #f5c542, #ff66d9, #29e0ff);
+  background-size: 200% 100%;
+  transition: background-position 0.25s ease, transform 0.15s ease,
+    box-shadow 0.15s ease;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+}
+
+#account-modal .ct-account-modal .login-submit input[type="submit"]:hover {
+  background-position: 100% 0;
+  transform: translateY(-1px);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.75);
+}
+
+#account-modal .ct-account-modal .login-submit input[type="submit"]:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 600px) {
+  #account-modal .ct-account-modal {
+    max-width: 90vw;
+    padding: 28px 22px;
+    border-radius: 18px;
+  }
+}
+
+/* Giữ nền card trắng + chữ tím đậm */
+#account-modal .ct-account-modal {
+  background: #ffffff;
+  color: #240046;
+}
+
+/* Hiện lại tiêu đề mặc định (nếu có) */
+#account-modal .ct-account-modal h2,
+#account-modal .ct-account-modal .ct-modal-title {
+  display: block !important;
+  color: #240046;
+  text-align: center;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+/* Tắt pseudo-title mình thêm lúc nãy */
+#account-modal .ct-account-modal::before,
+#account-modal .ct-account-modal::after {
+  content: none !important;
+}
+
+/* Label + text + placeholder dùng màu tối cho dễ đọc */
+#account-modal .ct-account-modal label {
+  color: #555555;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+}
+
+#account-modal .ct-account-modal input[type="text"],
+#account-modal .ct-account-modal input[type="password"],
+#account-modal .ct-account-modal input[type="email"] {
+  color: #ffffff !important;                 /* chữ trắng để nổi bật */
+  caret-color: #ffffff !important;            /* màu con trỏ */
+}
+
+/* Placeholder màu nhạt nhưng nhìn rõ */
+#account-modal .ct-account-modal input::placeholder {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+/* Khi focus viền chuyển sang màu vàng G Academy */
+#account-modal .ct-account-modal input:focus {
+  border-color: #f5c542 !important;
+  box-shadow: 0 0 0 1px rgba(245, 197, 66, 0.6) !important;
+}
+
+/* ======FOOTER===== */
+/* Hide all default Blocksy footer padding/wrappers */
+.ct-footer {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* Bỏ mọi border ngăn cách giữa main và footer */
+#main,
+#main-container,
+#main > .ct-container-fluid,
+#main > .ct-container {
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+/* Footer Blocksy không có border-top */
+footer#footer.ct-footer,
+footer#footer.ct-footer::before,
+footer#footer.ct-footer::after {
+    border-top: none !important;
+    box-shadow: none !important;
+}
+
+/* Xóa nền + padding của footer Blocksy */
+footer#footer.ct-footer {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+}
+
+/* Cho container trong footer full-width, không bó 1200px */
+footer#footer.ct-footer .ct-container-fluid,
+footer#footer.ct-footer .ct-container,
+footer#footer.ct-footer .ct-footer-widgets-area {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+}
+
+/* Ép tất cả chữ trong footer G Academy về màu sáng */
+footer#footer .gac-footer-wrapper,
+footer#footer .gac-footer-wrapper * {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+/* Các phần chữ phụ màu nhạt */
+footer#footer .gac-footer-cta-text,
+footer#footer .gac-footer-brand-text,
+footer#footer .gac-footer-contact-value,
+footer#footer .gac-footer-links a {
+    color: #c9d4ff !important;
+}
+
+/* Tiêu đề footer */
+footer#footer .gac-footer-heading {
+    color: #ffffff !important;
+}
+
+/* Chữ highlight (AI & bán hàng, link hover...) */
+footer#footer .gac-footer-cta-title span {
+    color: #29e0ff !important;
+}
+
+/* Chữ màu vàng/cyan nếu bạn có */
+footer#footer .cyan { color: #29e0ff !important; }
+footer#footer .gold { color: #f5c542 !important; }
+
+
+/* (tuỳ chọn) tránh tràn ngang vì CSS khác */
+body {
+    overflow-x: hidden;
+}
+
+/*==============Tutor Card======================*/
+/* Giới hạn chiều rộng khu vực khoá học + căn giữa */
+.tutor-wrap, 
+.tutor-course-listing, 
+.tutor-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Tăng khoảng cách phía trên list khoá học (phòng TH nó vẫn hơi sát hero) */
+.tutor-course-listing {
+    margin-top: 40px;
+}
+
+/* Card khoá học trông giống “card AI” hơn */
+.tutor-course-card, 
+.tutor-card {
+    background: rgba(3, 0, 45, 0.95);
+    border-radius: 24px;
+    border: 1px solid rgba(41, 224, 255, 0.35);
+    box-shadow: 0 20px 40px rgba(0,0,0,.65);
+}
+
+/* Tiêu đề khoá học: cyan + hover vàng */
+.tutor-course-card-title a {
+    color: #29e0ff;
+    font-weight: 700;
+}
+
+.tutor-course-card-title a:hover {
+    color: #f5c542;
+}
+
+/* Nút thêm vào giỏ: gradient cyan → vàng */
+.tutor-btn, 
+.tutor-btn-primary {
+    background-image: linear-gradient(90deg, #29e0ff, #f5c542);
+    border-radius: 999px;
+    border: none;
+    color: #020014;
+    font-weight: 600;
+    padding: 10px 24px;
+}
+
+.tutor-btn:hover,
+.tutor-btn-primary:hover {
+    filter: brightness(1.08);
+}
+
+/* Dropdown sắp xếp cho gọn lại */
+.tutor-course-filter {
+    margin-bottom: 20px;
+}
+
+/*==============End Tutor Card======================*/
+
+
