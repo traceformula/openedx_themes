@@ -431,6 +431,23 @@
     padding: 0 !important;
 }
 
+/* Bỏ mọi border ngăn cách giữa main và footer */
+#main,
+#main-container,
+#main > .ct-container-fluid,
+#main > .ct-container {
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+/* Footer Blocksy không có border-top */
+footer#footer.ct-footer,
+footer#footer.ct-footer::before,
+footer#footer.ct-footer::after {
+    border-top: none !important;
+    box-shadow: none !important;
+}
+
 /* Xóa nền + padding của footer Blocksy */
 footer#footer.ct-footer {
     background: transparent !important;
