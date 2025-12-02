@@ -1063,4 +1063,132 @@ body {
 
 /*==============End Tutor Card======================*/
 
+/*==============Khoa hoc Specific===================*/
+/************************************************************
+ * G ACADEMY – TRANG "KHÓA HỌC" (page-id-1013)
+ * Chỉ style: dropdown filter + tutor course card
+ ************************************************************/
 
+/* ===== DROPDOWN LỌC KHOÁ HỌC ===== */
+
+.page-id-1013 .tutor-course-filter {
+    display: flex;
+    justify-content: flex-end;      /* desktop: căn phải */
+    margin: 24px 0 16px;
+    gap: 8px;
+}
+
+.page-id-1013 .tutor-course-filter select,
+.page-id-1013 .tutor-course-filter .tutor-form-select {
+    border-radius: 999px;
+    padding: 8px 20px;
+    min-width: 220px;
+    border: 1px solid rgba(41, 224, 255, 0.8);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    font-weight: 500;
+    color: #01b7ff;
+}
+
+/* Nếu Tutor dùng pseudo arrow */
+.page-id-1013 .tutor-course-filter .tutor-form-select:after {
+    color: #01b7ff;
+}
+
+
+/* ===== CARD KHOÁ HỌC ===== */
+
+.page-id-1013 .tutor-course-card,
+.page-id-1013 .tutor-card {
+    background: radial-gradient(circle at top left, #05001e 0%, #020014 60%, #020014 100%);
+    border-radius: 24px;
+    border: 1px solid rgba(41, 224, 255, 0.35);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+}
+
+/* Tiêu đề khoá học */
+.page-id-1013 .tutor-course-card-title a {
+    color: #29e0ff;
+    font-weight: 700;
+}
+
+.page-id-1013 .tutor-course-card-title a:hover {
+    color: #f5c542;
+}
+
+/* Text trong card trắng cho dễ đọc */
+.page-id-1013 .tutor-course-card,
+.page-id-1013 .tutor-course-card * {
+    color: #ffffff;
+}
+
+/* Tên tác giả nhạt hơn chút */
+.page-id-1013 .tutor-course-card .tutor-course-author a {
+    color: #9bb6ff;
+}
+
+/* Giá gạch ngang mờ đi */
+.page-id-1013 .tutor-course-card-price del {
+    opacity: 0.5;
+}
+
+/* Nút "Thêm vào giỏ hàng" – gradient cyan → vàng */
+.page-id-1013 .tutor-btn,
+.page-id-1013 .tutor-btn-primary {
+    background-image: linear-gradient(90deg, #29e0ff, #f5c542);
+    border-radius: 999px;
+    border: none;
+    color: #020014;
+    font-weight: 600;
+    padding: 10px 24px;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+}
+
+.page-id-1013 .tutor-btn:hover,
+.page-id-1013 .tutor-btn-primary:hover {
+    filter: brightness(1.08);
+}
+
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablet: dropdown không cần dồn quá sát bên phải */
+@media (max-width: 1024px) {
+    .page-id-1013 .tutor-course-filter {
+        justify-content: flex-start;
+    }
+}
+
+/* Mobile: dropdown giữa, card full-width hơn */
+@media (max-width: 768px) {
+    .page-id-1013 .tutor-course-filter {
+        justify-content: center;
+    }
+
+    .page-id-1013 .tutor-course-filter select,
+    .page-id-1013 .tutor-course-filter .tutor-form-select {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .page-id-1013 .tutor-course-card,
+    .page-id-1013 .tutor-card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/*============End Khoa hoc Specific=================*/
+
+/* NỀN TOÀN TRANG – tím galaxy */
+body.page-id-997, body.page-id-998, body.single-courses, body.search {
+    background: radial-gradient(circle at top,
+        #3f0097 0%,
+        #240046 35%,
+        #12002f 70%,
+        #050017 100%
+    );
+    background-attachment: fixed;
+    color: #ffffff;
+}
