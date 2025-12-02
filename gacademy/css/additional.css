@@ -1192,3 +1192,337 @@ body.page-id-997, body.page-id-998, body.single-courses, body.search {
     background-attachment: fixed;
     color: #ffffff;
 }
+
+/* ===========================================
+   G ACADEMY - FIX DASHBOARD (page-id-997)
+   =========================================== */
+.page-id-997 {
+    background: #0d0221 !important;
+}
+
+/* --- Fix header bị đẩy xuống / spacing --- */
+.page-id-997 .site-main {
+    padding-top: 40px !important;
+}
+
+/* --- Sidebar text rõ hơn --- */
+.page-id-997 .tutor-dashboard-left-menu a,
+.page-id-997 .tutor-dashboard-left-menu li,
+.page-id-997 .tutor-dashboard-left-menu span {
+    color: #d8e9ff !important;
+}
+
+.page-id-997 .tutor-dashboard-left-menu .active,
+.page-id-997 .tutor-dashboard-left-menu a:hover {
+    background: rgba(41, 224, 255, 0.15) !important;
+    color: #29e0ff !important;
+}
+
+/* --- Icon sidebar sáng hơn --- */
+.page-id-997 .tutor-dashboard-left-menu i {
+    color: #29e0ff !important;
+    opacity: 0.9 !important;
+}
+
+/* --- Title “Thông Tin Tài Khoản” --- */
+.page-id-997 h4,
+.page-id-997 h3,
+.page-id-997 .tutor-color-text-primary,
+.page-id-997 .tutor-dashboard-content h4 {
+    color: #29e0ff !important;
+}
+
+/* --- Box Cards --- */
+.page-id-997 .tutor-dashboard-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(8px);
+    border-radius: 16px !important;
+}
+
+/* Number inside card */
+.page-id-997 .tutor-dashboard-card h3,
+.page-id-997 .tutor-dashboard-card .tutor-fs-3 {
+    color: #29e0ff !important;
+    font-weight: 700;
+}
+
+/* Text inside card */
+.page-id-997 .tutor-dashboard-card p {
+    color: #c8d4ff !important;
+}
+
+/* Icon inside cards */
+.page-id-997 .tutor-dashboard-card i {
+    color: #29e0ff !important;
+    opacity: 1 !important;
+}
+
+/* --- Khoảng cách các card cho responsive --- */
+@media (max-width: 768px) {
+    .page-id-997 .tutor-dashboard-card {
+        margin-bottom: 15px !important;
+    }
+}
+
+/* --- Fix toàn bộ text bị "mờ" --- */
+.page-id-997 * {
+    text-shadow: none !important;
+    opacity: 1 !important;
+}
+
+/* --- Fix nút "Khoá học mới" --- */
+.page-id-997 .tutor-btn,
+.page-id-997 .tutor-btn-primary {
+    background: linear-gradient(90deg, #29e0ff, #f5c542) !important;
+    border: none !important;
+    color: #0d0221 !important;
+    font-weight: 600 !important;
+}
+
+/* --- Fix phần top bị lệch / bị đè bởi menu --- */
+.page-id-997 .tutor-dashboard-header {
+    margin-top: 40px !important;
+}
+
+/* Bắt mọi nút nhỏ dạng pill ở khu "Các khóa học của tôi" */
+.page-id-997 .tutor-dashboard-content a.tutor-btn,
+.page-id-997 .tutor-dashboard-content .tutor-btn,
+.page-id-997 a.tutor-dashboard-view-more {
+    padding: 8px 20px !important;    /* nới padding để chữ không bị bó */
+    font-size: 13px;
+    line-height: 1.3;
+    border-radius: 999px;
+    white-space: nowrap;             /* không cho xuống dòng */
+}
+
+/* Option: chỉnh màu chữ + nền cho đồng bộ theme */
+.page-id-997 .tutor-dashboard-content a.tutor-btn,
+.page-id-997 a.tutor-dashboard-view-more {
+    background: linear-gradient(90deg, #29e0ff, #f5c542) !important;
+    color: #050017 !important;
+    font-weight: 600;
+}
+
+/* Text mô tả trong card + dưới card */
+.page-id-997 .tutor-dashboard-content p,
+.page-id-997 .tutor-dashboard-content small,
+.page-id-997 .tutor-dashboard-content span,
+.page-id-997 .tutor-dashboard-content td,
+.page-id-997 .tutor-dashboard-content th {
+    color: #e2ebff !important;      /* xanh nhạt sáng, dễ đọc trên nền tím */
+}
+
+/* Giữ màu heading cyan neon */
+.page-id-997 .tutor-dashboard-content h3,
+.page-id-997 .tutor-dashboard-content h4 {
+    color: #29e0ff !important;
+    font-weight: 700;
+}
+
+/* ================================
+   1. TĂNG ĐỘ RÕ CHỮ TRONG SINGLE COURSE
+   ================================ */
+.single-course,
+.single-course * {
+    color: #ffffff !important;
+    text-shadow: 0 0 4px rgba(0,0,0,0.4);
+}
+
+/* Tiêu đề khoá học */
+.single-course .tutor-course-header-title {
+    color: #f8f8f8 !important;
+    font-weight: 700 !important;
+}
+
+/* Category */
+.single-course .tutor-meta-level,
+.single-course .tutor-course-meta {
+    color: #d8d8d8 !important;
+}
+
+/* ================================
+   2. VIDEO PLAYER – CHỮ, ICON RÕ
+   ================================ */
+.tutor-video-player * {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+/* ================================
+   3. GIÁ & SIDEBAR CARD
+   ================================ */
+.single-course .tutor-price-preview-box {
+    background: rgba(0,0,0,0.45) !important;
+    border-radius: 18px;
+    backdrop-filter: blur(10px);
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.single-course .tutor-price-preview-box .price,
+.single-course .tutor-price-preview-box .tutor-price-title {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+/* ================================
+   4. BUTTON – CHỮ RÕ, ĐẬM, NỔI
+   ================================ */
+.tutor-button,
+.tutor-btn,
+.tutor-btn-primary,
+.single-course .tutor-course-sidebar-card .tutor-button {
+    background: linear-gradient(90deg, #00d4ff, #29e0ff) !important;
+    color: #000 !important;
+    font-weight: 700 !important;
+    border-radius: 30px !important;
+    padding: 14px 26px !important;
+    text-shadow: none !important;
+}
+
+.tutor-button:hover,
+.tutor-btn:hover,
+.tutor-btn-primary:hover {
+    background: linear-gradient(90deg, #f5c542, #ffdb6e) !important;
+    color: #000 !important;
+}
+
+/* ================================
+   5. BOX "Khóa học được tạo bởi"
+   ================================ */
+.single-course .tutor-course-author {
+    background: rgba(255,255,255,0.06) !important;
+    border-radius: 16px;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ================================
+   6. GIỚI THIỆU & MÔ TẢ – CHỮ RÕ HƠN
+   ================================ */
+.single-course .tutor-course-details-content,
+.single-course .tutor-course-details-content p {
+    color: #eaeaea !important;
+    line-height: 1.65;
+    font-size: 17px;
+}
+
+/* ================================
+   7. FIX MÀU ICON (Level, Instructor, etc.)
+   ================================ */
+.single-course svg,
+.single-course svg * {
+    fill: #29e0ff !important;
+    color: #29e0ff !important;
+    opacity: 1 !important;
+}
+
+/* ========================================
+   0. BỎ TEXT-SHADOW CŨ (HẾT BỊ NHÒE)
+   ======================================== */
+[data-prefix="courses_single"] *,
+[data-prefix="courses_single"] *::before,
+[data-prefix="courses_single"] *::after {
+    text-shadow: none !important;
+}
+
+/* ========================================
+   1. TIÊU ĐỀ KHOÁ HỌC – CHỮ SÁNG, RÕ
+   ======================================== */
+[data-prefix="courses_single"] .tutor-course-details-title,
+[data-prefix="courses_single"] .tutor-course-details-title span {
+    color: #fdfbff !important;      /* gần như trắng */
+    font-weight: 800 !important;
+}
+
+/* ========================================
+   2. TOÀN BỘ TEXT CHUNG – TRẮNG / XÁM NHẠT
+   ======================================== */
+[data-prefix="courses_single"] .tutor-color-black,
+[data-prefix="courses_single"] .tutor-color-secondary,
+[data-prefix="courses_single"] .tutor-fs-6,
+[data-prefix="courses_single"] .tutor-course-details-content,
+[data-prefix="courses_single"] .tutor-course-details-content p {
+    color: #e4e7ff !important;      /* xám tím nhạt, dễ đọc trên nền tím */
+}
+
+/* Heading con như "Giới thiệu về khoá học" */
+[data-prefix="courses_single"] h2.tutor-fs-5.tutor-fw-bold {
+    color: #29e0ff !important;      /* cyan neon theo theme */
+    font-weight: 700 !important;
+}
+
+/* ========================================
+   3. XOÁ / ĐỔI GRADIENT TRẮNG LÀM MỜ CHỮ
+   ======================================== */
+
+/* Option A: tắt hẳn hiệu ứng mờ (read more) */
+[data-prefix="courses_single"] .tutor-toggle-more-content::after {
+    display: none !important;
+}
+
+/* Nếu muốn giữ hiệu ứng nhưng đúng màu nền, dùng Option B thay cho A:
+[data-prefix="courses_single"] .tutor-toggle-more-content::after {
+    background: linear-gradient(
+        180deg,
+        rgba(36, 0, 70, 0) 0%,
+        rgba(36, 0, 70, 0.98) 85%
+    ) !important;
+}
+*/
+
+/* ========================================
+   4. NÚT – CHỮ ĐẬM, RÕ
+   ======================================== */
+[data-prefix="courses_single"] .tutor-button,
+[data-prefix="courses_single"] .tutor-btn,
+[data-prefix="courses_single"] .tutor-btn-primary {
+    background: linear-gradient(90deg, #00d4ff, #29e0ff) !important;
+    color: #000000 !important;
+    font-weight: 700 !important;
+    border-radius: 30px !important;
+    padding: 12px 24px !important;
+}
+
+/* Hover nút */
+[data-prefix="courses_single"] .tutor-button:hover,
+[data-prefix="courses_single"] .tutor-btn:hover,
+[data-prefix="courses_single"] .tutor-btn-primary:hover {
+    background: linear-gradient(90deg, #f5c542, #ffdb6e) !important;
+    color: #000000 !important;
+}
+
+/* 1. XÓA HOÀN TOÀN VỆT TRẮNG GRADIENT Ở MÔ TẢ KHOÁ HỌC */
+
+/* Pseudo-element gradient của Tutor trong phần mô tả */
+.tutor-course-details-content::after,
+.tutor-course-details-content .tutor-toggle-more-content::after,
+.tutor-course-details-content .tutor-toggle-more-collapsed::after,
+.tutor-course-details-content [class*="tutor-toggle-more"]::after {
+    content: '' !important;
+    display: none !important;
+    background: none !important;
+    box-shadow: none !important;
+    opacity: 0 !important;
+}
+
+/* Phòng trường hợp nó dùng background/box-shadow trực tiếp */
+.tutor-course-details-content,
+.tutor-course-details-content .tutor-toggle-more-content,
+.tutor-course-details-content .tutor-toggle-more-collapsed {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.tutor-toggle-more-collapsed:before {
+    display: none !important;
+}
+
+/* 2. ĐẢM BẢO CHỮ TRONG PHẦN MÔ TẢ LUÔN RÕ, KHÔNG BỊ LỢT */
+.single-course .tutor-course-details-content,
+.single-course .tutor-course-details-content p {
+    color: #e9ebff !important;      /* trắng hơi tím, dễ đọc trên nền tím */
+    line-height: 1.7 !important;
+    text-shadow: none !important;
+}
