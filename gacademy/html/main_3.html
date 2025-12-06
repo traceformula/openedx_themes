@@ -100,7 +100,7 @@ html, body {
 /* CTA button */
 .cta-btn {
   position: absolute;
-  bottom: 80px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: inline-block;
@@ -281,6 +281,34 @@ html, body {
   .hero-phase h2 { font-size:6vw; }
   .hero-phase p { font-size:4vw; }
 }
+
+/* Mở rộng toàn bộ hero content trên iPhone / mobile */
+@media (max-width: 768px) {
+  .hero-content {
+    width: 100%;
+    padding: 0 12px; /* giữ khoảng cách mép trái/phải cho đẹp */
+    box-sizing: border-box;
+  }
+
+  .hero-phase {
+    width: 100%;
+    max-width: none;      /* bỏ giới hạn 360–420px */
+    margin: 0 auto;
+    padding: 28px 24px;   /* text thoáng hơn */
+    border-radius: 20px;
+  }
+
+  /* Chỉnh font để hợp khi box rộng */
+  .hero-phase h2 {
+    font-size: 5vw;
+  }
+
+  .hero-phase p {
+    font-size: 3.9vw;
+    line-height: 1.6;
+  }
+}
+
 </style>
 </head>
 <body>
