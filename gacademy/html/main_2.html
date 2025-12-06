@@ -9,7 +9,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #1a0033, #4b0082);
+  background: linear-gradient(135deg, #050016, #190033);
   color: white;
   overflow-x: hidden;
   font-family: 'Inter', sans-serif;
@@ -51,12 +51,19 @@ html, body {
   position: absolute;
   top: 50%;
   left: 50%;
-  background: linear-gradient(135deg, rgba(40,0,80,0.85), rgba(60,0,120,0.7));
+  background: linear-gradient(135deg, rgba(18,0,45,0.9), rgba(40,0,90,0.75));
   padding: 24px 32px;
   border-radius: 16px;
-  text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  text-shadow: 0 0 24px rgba(0,0,0,0.8);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.7);
   max-width: 90%;
+}
+
+/* Đảm bảo chữ trong hero luôn màu sáng, không bị đổi thành đen */
+.hero-phase h1,
+.hero-phase h2,
+.hero-phase p {
+  color: #FDFBFF;
 }
 
 .hero-phase.active {
@@ -87,7 +94,7 @@ html, body {
 }
 
 .hero-phase .highlight {
-  color: #00FFFF;
+  color: #7DF9FF;
   font-weight: 700;
 }
 
@@ -108,13 +115,13 @@ html, body {
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-decoration: none;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.6);
   z-index: 3;
 }
 
 .cta-btn:hover {
   transform: translateX(-50%) translateY(-2px);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.75);
 }
 
 /* Gallery section below hero */
@@ -130,6 +137,7 @@ html, body {
   text-align: center;
   font-family: 'Poppins', sans-serif;
   margin-bottom: 40px;
+  color: #FFFFFF;
 }
 
 .gallery-grid {
@@ -148,8 +156,8 @@ html, body {
 .who-section,
 .benefit-section {
   padding: 80px 20px;
-  background: radial-gradient(circle at top left, rgba(255,255,255,0.05), transparent 55%),
-              radial-gradient(circle at bottom right, rgba(0,255,255,0.05), transparent 55%);
+  background: radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 55%),
+              radial-gradient(circle at bottom right, rgba(125,249,255,0.08), transparent 55%);
 }
 
 .trust-inner,
@@ -166,6 +174,7 @@ html, body {
   font-family: 'Poppins', sans-serif;
   font-size: 2.2rem;
   margin-bottom: 16px;
+  color: #FFFFFF;
 }
 
 .trust-inner p,
@@ -197,7 +206,7 @@ html, body {
   position: absolute;
   left: 8px;
   top: 0;
-  color: #00FFFF;
+  color: #7DF9FF;
 }
 
 .who-cols {
@@ -209,16 +218,17 @@ html, body {
 
 .who-col {
   flex: 1 1 250px;
-  background: rgba(8,0,30,0.8);
+  background: rgba(8,0,30,0.9);
   border-radius: 16px;
   padding: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
 .who-col h3 {
   font-size: 1.2rem;
   margin-bottom: 8px;
+  color: #FDFBFF;
 }
 
 .note {
@@ -232,7 +242,7 @@ html, body {
 .video-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   display: none;
   align-items: center;
   justify-content: center;
@@ -245,7 +255,7 @@ html, body {
   max-width: 90%;
   max-height: 80vh;
   border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.9);
 }
 .close-btn {
   position: absolute;
@@ -371,28 +381,54 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
 camera.position.z = 5;
 
-// Purple-themed Particles
-const particleCount = 700;
+// "Star / snow" Particles
+const particleCount = 1200;
 const geometry = new THREE.BufferGeometry();
-const positions = [], colors = [];
-for (let i=0; i<particleCount; i++){
-  positions.push((Math.random()-0.5)*14, (Math.random()-0.5)*10, (Math.random()-0.5)*8);
-  const color = new THREE.Color().setHSL(0.8 + Math.random()*0.1, 0.7, 0.7);
+const positions = [];
+const colors = [];
+const sizes = [];
+
+// tạo sao trong một bán cầu phía sau camera
+for (let i = 0; i < particleCount; i++) {
+  const radius = 10 + Math.random() * 16;
+  const theta = Math.random() * 2 * Math.PI;
+  const phi = Math.acos((Math.random() * 2) - 1);
+
+  const x = radius * Math.sin(phi) * Math.cos(theta);
+  const y = radius * Math.sin(phi) * Math.sin(theta);
+  const z = radius * Math.cos(phi);
+
+  positions.push(x, y, z);
+
+  // màu trắng hơi xanh
+  const color = new THREE.Color(0xE8F9FF);
   colors.push(color.r, color.g, color.b);
+
+  // kích thước random tượng trưng "sao to / sao nhỏ"
+  sizes.push(0.03 + Math.random() * 0.05);
 }
+
 geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
 geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-const material = new THREE.PointsMaterial({ size:0.06, vertexColors:true, transparent:true, opacity:0.8 });
+
+const material = new THREE.PointsMaterial({
+  size: 0.06,
+  vertexColors: true,
+  transparent: true,
+  opacity: 0.9,
+  sizeAttenuation: true
+});
+
 const particles = new THREE.Points(geometry, material);
 scene.add(particles);
 
 // Planet-like sphere on the left
 const planetGeo = new THREE.SphereGeometry(1.3, 32, 32);
 const planetMat = new THREE.MeshStandardMaterial({
-  color: 0x9966FF,
-  emissive: 0x330066,
-  metalness: 0.4,
-  roughness: 0.3
+  color: 0x8A63FF,
+  emissive: 0x2A0044,
+  metalness: 0.5,
+  roughness: 0.35
 });
 const planet = new THREE.Mesh(planetGeo, planetMat);
 planet.position.set(-2.5, 0.5, -2);
@@ -401,35 +437,50 @@ scene.add(planet);
 // Light
 const ambient = new THREE.AmbientLight(0xffffff, 0.7);
 scene.add(ambient);
-const pointLight = new THREE.PointLight(0xff88ff, 1, 20);
+const pointLight = new THREE.PointLight(0xA0A0FF, 1.2, 25);
 pointLight.position.set(3,3,4);
 scene.add(pointLight);
 
 // Profile image as transparent plane
 let profMesh = null;
 const loader = new THREE.TextureLoader();
-loader.load('/wp-content/uploads/2025/11/giang-683x1024.png', (texture)=>{
+loader.load('https://gbuild.pro/wp-content/uploads/2025/11/trainer-transparent.png', (texture)=>{
   const height = 3;
   const aspect = texture.image.width / texture.image.height;
   const width = height * aspect;
   const planeGeo = new THREE.PlaneGeometry(width, height);
-  const planeMat = new THREE.MeshBasicMaterial({ map: texture, transparent: true, opacity: 0 });
+  const planeMat = new THREE.MeshBasicMaterial({ map: texture, transparent: true, opacity: 0.0 });
   profMesh = new THREE.Mesh(planeGeo, planeMat);
   profMesh.visible = true;
   profMesh.position.set(1.5, -1.2, 0);
   profMesh.scale.set(0.8, 0.8, 0.8);
   profMesh.baseY = profMesh.position.y;
   scene.add(profMesh);
+
+  // fade-in nhẹ cho trainer
+  const fadeDuration = 1.5;
+  let start = performance.now();
+  function fadeIn() {
+    const now = performance.now();
+    const t = Math.min(1, (now - start) / (fadeDuration * 1000));
+    planeMat.opacity = 0.1 + 0.9 * t;
+    if (t < 1) requestAnimationFrame(fadeIn);
+  }
+  fadeIn();
 });
 
 // Animate loop
 const clock = new THREE.Clock();
 function animate() {
   const elapsed = clock.getElapsedTime();
+
+  // chuyển động nhẹ như sao quay quanh
   particles.rotation.y = elapsed * 0.02;
-  particles.rotation.x = Math.sin(elapsed * 0.1) * 0.05;
+  particles.rotation.x = Math.sin(elapsed * 0.07) * 0.03;
+
+  // rung nhẹ planet
   planet.rotation.y += 0.003;
-  planet.rotation.x += 0.001;
+  planet.rotation.x += 0.0015;
 
   if(profMesh){
     profMesh.position.y = profMesh.baseY + Math.sin(elapsed*1.2)*0.1;
@@ -464,7 +515,7 @@ function showPhase() {
         profMesh.visible = true;
         profMesh.position.set(0, -0.5, 0);
         profMesh.scale.set(0.5,0.5,0.5);
-      } else if(current === 1 || current === 2 || current === 3){
+      } else {
         profMesh.visible = true;
         profMesh.position.set(0.3,-0.8,0);
         profMesh.scale.set(0.6,0.6,0.6);
