@@ -59,7 +59,7 @@ html, body {
   max-width: 90%;
 }
 
-/* Đảm bảo chữ trong hero luôn màu sáng, không bị đổi thành đen */
+/* đảm bảo chữ luôn sáng */
 .hero-phase h1,
 .hero-phase h2,
 .hero-phase p {
@@ -100,8 +100,8 @@ html, body {
 
 /* CTA button */
 .cta-btn {
-  position: absolute;   /* independent of text */
-  bottom: 80px;         /* distance from bottom of hero */
+  position: absolute;
+  bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
   display: inline-block;
@@ -386,9 +386,7 @@ const particleCount = 1200;
 const geometry = new THREE.BufferGeometry();
 const positions = [];
 const colors = [];
-const sizes = [];
 
-// tạo sao trong một bán cầu phía sau camera
 for (let i = 0; i < particleCount; i++) {
   const radius = 10 + Math.random() * 16;
   const theta = Math.random() * 2 * Math.PI;
@@ -403,9 +401,6 @@ for (let i = 0; i < particleCount; i++) {
   // màu trắng hơi xanh
   const color = new THREE.Color(0xE8F9FF);
   colors.push(color.r, color.g, color.b);
-
-  // kích thước random tượng trưng "sao to / sao nhỏ"
-  sizes.push(0.03 + Math.random() * 0.05);
 }
 
 geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
@@ -422,26 +417,41 @@ const material = new THREE.PointsMaterial({
 const particles = new THREE.Points(geometry, material);
 scene.add(particles);
 
-// Planet-like sphere on the left
-const planetGeo = new THREE.SphereGeometry(1.3, 32, 32);
-const planetMat = new THREE.MeshStandardMaterial({
-  color: 0x8A63FF,
-  emissive: 0x2A0044,
-  metalness: 0.5,
-  roughness: 0.35
-});
-const planet = new THREE.Mesh(planetGeo, planetMat);
-planet.position.set(-2.5, 0.5, -2);
-scene.add(planet);
+// === LOGO G ACADEMY THAY CHO QUẢ CẦU ===
+let logoMesh = null;
+const textureLoader = new THREE.TextureLoader();
 
-// Light
-const ambient = new THREE.AmbientLight(0xffffff, 0.7);
+// TODO: đổi URL này thành URL thật của logo PNG nền trong suốt sau khi bạn upload lên WordPress
+const LOGO_TEXTURE_URL = '/wp-content/uploads/2025/12/gacademy_halo_extracted.png';
+
+textureLoader.load(LOGO_TEXTURE_URL, (logoTexture) => {
+  const height = 2.6;                         // chiều cao logo trong 3D
+  const aspect = logoTexture.image.width / logoTexture.image.height;
+  const width = height * aspect;
+
+  const logoGeo = new THREE.PlaneGeometry(width, height);
+  const logoMat = new THREE.MeshBasicMaterial({
+    map: logoTexture,
+    transparent: true,
+    alphaTest: 0.1,      // giúp bỏ phần nền nếu còn hơi mờ
+    side: THREE.DoubleSide
+  });
+
+  logoMesh = new THREE.Mesh(logoGeo, logoMat);
+  logoMesh.position.set(-1.8, 0.4, -2);       // vị trí logo trong không gian
+  logoMesh.baseY = logoMesh.position.y;
+  logoMesh.rotation.y = -0.2;
+  scene.add(logoMesh);
+});
+
+// Light (nhẹ nhàng cho hiệu ứng sao)
+const ambient = new THREE.AmbientLight(0xffffff, 0.6);
 scene.add(ambient);
-const pointLight = new THREE.PointLight(0xA0A0FF, 1.2, 25);
+const pointLight = new THREE.PointLight(0xA0A0FF, 1.1, 25);
 pointLight.position.set(3,3,4);
 scene.add(pointLight);
 
-// Profile image as transparent plane
+// Profile image as transparent plane (trainer)
 let profMesh = null;
 const loader = new THREE.TextureLoader();
 loader.load('https://gbuild.pro/wp-content/uploads/2025/11/trainer-transparent.png', (texture)=>{
@@ -478,9 +488,11 @@ function animate() {
   particles.rotation.y = elapsed * 0.02;
   particles.rotation.x = Math.sin(elapsed * 0.07) * 0.03;
 
-  // rung nhẹ planet
-  planet.rotation.y += 0.003;
-  planet.rotation.x += 0.0015;
+  // logo G Academy nhẹ nhàng trôi + quay chút cho “3D”
+  if (logoMesh) {
+    logoMesh.position.y = logoMesh.baseY + Math.sin(elapsed * 1.0) * 0.08;
+    logoMesh.rotation.y = -0.25 + Math.sin(elapsed * 0.4) * 0.08;
+  }
 
   if(profMesh){
     profMesh.position.y = profMesh.baseY + Math.sin(elapsed*1.2)*0.1;
