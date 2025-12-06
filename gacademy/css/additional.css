@@ -207,6 +207,53 @@ body {
 }
 
 /*========TUTOR=========*/
-.tutor-page-wrap {
+.tutor-wrap  {
   margin-top: 100px;
+}
+
+/* Override Blocksy icon style */
+/* 🔮 Gbuild AI Icon Style */
+.ct-icon,
+.ct-icon-container svg {
+    width: var(--theme-icon-size, 18px);
+    height: var(--theme-icon-size, 18px);
+
+    fill: #cfd2ff; /* soft light-purple */
+    opacity: 0.9;
+
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease,
+        fill 0.25s ease,
+        opacity 0.25s ease;
+}
+
+/* ✨ Hover: neon glow + slight pop */
+.ct-icon-container:hover svg,
+.ct-icon:hover {
+    fill: #29e0ff; /* neon cyan */
+    transform: scale(1.18); /* subtle pop */
+    filter: drop-shadow(0 0 6px #29e0ff);
+    opacity: 1;
+}
+
+/* 🌙 Active (menu open, tab active, etc.) */
+.ct-icon.active svg,
+.ct-icon-container.active svg {
+    fill: #f5c542; /* gold */
+    filter: drop-shadow(0 0 8px rgba(245, 197, 66, 0.6));
+}
+
+/* 🔥 Optional: smoother glow on mobile tap */
+@media (hover: none) {
+    .ct-icon,
+    .ct-icon-container svg {
+        transform: none;
+        filter: none;
+    }
+
+    .ct-icon-container:active svg {
+        fill: #29e0ff;
+        filter: drop-shadow(0 0 6px #29e0ff);
+    }
 }
