@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>G ACADEMY Hero</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1a0033, #4b0082);
+  color: white;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hero wrapper */
+.hero {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+}
+
+/* Background canvas */
+#bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Hero content container */
+.hero-content {
+  position: relative;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Phase text blocks */
+.hero-phase {
+  opacity: 0;
+  transform: translate(-50%, -50%) translateY(20px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  margin: 12px 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: linear-gradient(135deg, rgba(40,0,80,0.85), rgba(60,0,120,0.7));
+  padding: 24px 32px;
+  border-radius: 16px;
+  text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  max-width: 90%;
+}
+
+.hero-phase.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0);
+}
+
+.hero-phase h1,
+.hero-phase h2 {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+.hero-phase h1 {
+  font-size: 3rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hero-phase h2 {
+  font-size: 2.2rem;
+}
+
+.hero-phase p {
+  margin: 8px 0 0 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.hero-phase .highlight {
+  color: #00FFFF;
+  font-weight: 700;
+}
+
+/* CTA button */
+.cta-btn {
+  position: absolute;   /* independent of text */
+  bottom: 80px;         /* distance from bottom of hero */
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #DA70FF, #FF85F5);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  z-index: 3;
+}
+
+.cta-btn:hover {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+}
+
+/* Gallery section below hero */
+.gallery {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.gallery h2 {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 40px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 20px;
+}
+.gallery img {
+  width:100%;
+  border-radius:8px;
+  display:block;
+}
+
+/* Trust & info sections */
+.trust-section,
+.who-section,
+.benefit-section {
+  padding: 80px 20px;
+  background: radial-gradient(circle at top left, rgba(255,255,255,0.05), transparent 55%),
+              radial-gradient(circle at bottom right, rgba(0,255,255,0.05), transparent 55%);
+}
+
+.trust-inner,
+.who-inner,
+.benefit-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.trust-inner h2,
+.who-inner h2,
+.benefit-inner h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.trust-inner p,
+.who-inner p,
+.benefit-inner p,
+.benefit-list li {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #E0E0FF;
+}
+
+.trust-inner ul,
+.benefit-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0 0;
+}
+
+.trust-inner ul li,
+.benefit-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 10px;
+}
+
+.trust-inner ul li::before,
+.benefit-list li::before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  color: #00FFFF;
+}
+
+.who-cols {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.who-col {
+  flex: 1 1 250px;
+  background: rgba(8,0,30,0.8);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.who-col h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.note {
+  margin-top: 24px;
+  font-size: 0.95rem;
+  color: #BEBEFF;
+  font-style: italic;
+}
+
+/* Video modal */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.video-modal.active {
+  display: flex;
+}
+.video-modal video {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+.close-btn {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Responsive hero text */
+@media (max-width:768px) {
+  .hero-phase h1 { font-size:6vw; }
+  .hero-phase h2 { font-size:5vw; }
+  .hero-phase p { font-size:3.5vw; }
+
+  .trust-section,
+  .who-section,
+  .benefit-section {
+    padding: 56px 16px;
+  }
+}
+@media (max-width:480px) {
+  .hero-phase h1 { font-size:8vw; }
+  .hero-phase h2 { font-size:6vw; }
+  .hero-phase p { font-size:4vw; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <canvas id="bg"></canvas>
+  <div class="hero-content">
+    <div class="hero-phase active" id="phase1">
+      <h1>G ACADEMY</h1>
+      <p>Xây kênh livestream bán hàng từ con số 0</p>
+    </div>
+    <div class="hero-phase" id="phase2">
+      <h2>Master Live Stream Trainer <span class="highlight">HƯƠNG GIANG</span></h2>
+      <p>5 năm kinh nghiệm bán hàng livestream, đồng hành cùng hàng trăm chủ shop online.</p>
+    </div>
+    <div class="hero-phase" id="phase3">
+      <h2><span class="highlight">BẬC THẦY BÁN HÀNG</span></h2>
+      <p><span class="highlight">Lộ trình 28 chiến lược bán lẻ</span> tập trung vào thực hành, có thể áp dụng ngay trên kênh của bạn.</p>
+    </div>
+    <div class="hero-phase" id="phase4">
+      <p><span class="highlight">Khóa này dành cho bạn nếu:</span></p>
+      <p>- Livestream ít người xem, không biết nói gì với khách.</p>
+      <p>- Đã thử nhiều khóa online nhưng chưa áp dụng được vào thực tế.</p>
+      <p>- Muốn xây thương hiệu cá nhân để bán hàng bền vững, không chỉ chạy quảng cáo.</p>
+    </div>
+  </div>
+
+  <!-- CTA button outside phases -->
+  <button class="cta-btn" id="playVideoBtn">▶ Xem Video</button>
+</div>
+
+<div class="gallery" id="gallery"></div>
+
+<section class="trust-section">
+  <div class="trust-inner">
+    <h2>Vì sao bạn có thể tin G Academy?</h2>
+    <p>Chúng tôi tập trung vào thực hành, không lý thuyết lan man – mỗi buổi học đều gắn với kịch bản livestream thật của học viên.</p>
+    <ul>
+      <li>Đã đồng hành cùng hơn <strong>1.200+ chủ shop online</strong> ở nhiều ngành hàng khác nhau.</li>
+      <li>Bài học ngắn gọn, có bài tập cụ thể để áp dụng ngay trong tuần đầu tiên.</li>
+      <li>Cộng đồng hỗ trợ sau khóa học – không bỏ rơi bạn sau khi kết thúc buổi học cuối.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="who-section">
+  <div class="who-inner">
+    <h2>Khóa học này dành cho ai?</h2>
+    <div class="who-cols">
+      <div class="who-col">
+        <h3>Chủ shop mới bắt đầu</h3>
+        <p>Bạn chưa từng livestream hoặc chỉ mới thử vài lần nhưng rất ít người xem.</p>
+      </div>
+      <div class="who-col">
+        <h3>Người bán hàng muốn nâng cấp</h3>
+        <p>Bạn đã bán online nhưng chưa có kịch bản rõ ràng, livestream không đều, dễ nản.</p>
+      </div>
+      <div class="who-col">
+        <h3>Người xây thương hiệu cá nhân</h3>
+        <p>Bạn muốn kể câu chuyện thật của mình để chạm tới khách hàng thay vì quảng cáo “đao to búa lớn”.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefit-section">
+  <div class="benefit-inner">
+    <h2>Bạn nhận được gì sau khóa học?</h2>
+    <ul class="benefit-list">
+      <li>01 lộ trình 28 chiến lược bán lẻ có thể áp dụng ngay.</li>
+      <li>Gợi ý kịch bản cho 10–15 buổi livestream đầu tiên trên kênh của bạn.</li>
+      <li>Checklist chuẩn bị trước – trong – sau livestream để không bỏ sót bước quan trọng.</li>
+      <li>Record buổi học (nếu học online) để bạn có thể xem lại bất cứ lúc nào.</li>
+    </ul>
+    <p class="note">Không ràng buộc, không “chốt sales” gượng ép – bạn chỉ đăng ký khi thấy phù hợp.</p>
+  </div>
+</section>
+
+<!-- Video Modal -->
+<div class="video-modal" id="videoModal">
+  <span class="close-btn" id="closeVideo">&times;</span>
+  <video id="heroVideo" controls>
+    <source src="https://gbuild.pro/wp-content/uploads/2025/11/output_000.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</div>
+
+<script src="https://unpkg.com/three@0.150.0/build/three.min.js"></script>
+<script>
+// --- Three.js Setup ---
+const canvas = document.getElementById('bg');
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+camera.position.z = 5;
+
+// Purple-themed Particles
+const particleCount = 700;
+const geometry = new THREE.BufferGeometry();
+const positions = [], colors = [];
+for (let i=0; i<particleCount; i++){
+  positions.push((Math.random()-0.5)*14, (Math.random()-0.5)*10, (Math.random()-0.5)*8);
+  const color = new THREE.Color().setHSL(0.8 + Math.random()*0.1, 0.7, 0.7);
+  colors.push(color.r, color.g, color.b);
+}
+geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+const material = new THREE.PointsMaterial({ size:0.06, vertexColors:true, transparent:true, opacity:0.8 });
+const particles = new THREE.Points(geometry, material);
+scene.add(particles);
+
+// Planet-like sphere on the left
+const planetGeo = new THREE.SphereGeometry(1.3, 32, 32);
+const planetMat = new THREE.MeshStandardMaterial({
+  color: 0x9966FF,
+  emissive: 0x330066,
+  metalness: 0.4,
+  roughness: 0.3
+});
+const planet = new THREE.Mesh(planetGeo, planetMat);
+planet.position.set(-2.5, 0.5, -2);
+scene.add(planet);
+
+// Light
+const ambient = new THREE.AmbientLight(0xffffff, 0.7);
+scene.add(ambient);
+const pointLight = new THREE.PointLight(0xff88ff, 1, 20);
+pointLight.position.set(3,3,4);
+scene.add(pointLight);
+
+// Profile image as transparent plane
+let profMesh = null;
+const loader = new THREE.TextureLoader();
+loader.load('/wp-content/uploads/2025/11/giang-683x1024.png', (texture)=>{
+  const height = 3;
+  const aspect = texture.image.width / texture.image.height;
+  const width = height * aspect;
+  const planeGeo = new THREE.PlaneGeometry(width, height);
+  const planeMat = new THREE.MeshBasicMaterial({ map: texture, transparent: true, opacity: 0 });
+  profMesh = new THREE.Mesh(planeGeo, planeMat);
+  profMesh.visible = true;
+  profMesh.position.set(1.5, -1.2, 0);
+  profMesh.scale.set(0.8, 0.8, 0.8);
+  profMesh.baseY = profMesh.position.y;
+  scene.add(profMesh);
+});
+
+// Animate loop
+const clock = new THREE.Clock();
+function animate() {
+  const elapsed = clock.getElapsedTime();
+  particles.rotation.y = elapsed * 0.02;
+  particles.rotation.x = Math.sin(elapsed * 0.1) * 0.05;
+  planet.rotation.y += 0.003;
+  planet.rotation.x += 0.001;
+
+  if(profMesh){
+    profMesh.position.y = profMesh.baseY + Math.sin(elapsed*1.2)*0.1;
+  }
+
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener('resize', ()=>{
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+});
+
+// --- Phased Text Animation ---
+const phases = [
+  document.getElementById('phase1'),
+  document.getElementById('phase2'),
+  document.getElementById('phase3'),
+  document.getElementById('phase4')
+];
+let current = 0;
+function showPhase() {
+  phases.forEach(p => p.classList.remove('active'));
+  phases[current].classList.add('active');
+
+  if(profMesh){
+    if(window.innerWidth < 768){
+      if(current === 0){
+        profMesh.visible = true;
+        profMesh.position.set(0, -0.5, 0);
+        profMesh.scale.set(0.5,0.5,0.5);
+      } else if(current === 1 || current === 2 || current === 3){
+        profMesh.visible = true;
+        profMesh.position.set(0.3,-0.8,0);
+        profMesh.scale.set(0.6,0.6,0.6);
+      }
+    } else {
+      profMesh.visible = true;
+      profMesh.position.set(1.5, -1.2, 0);
+      profMesh.scale.set(0.8,0.8,0.8);
+    }
+  }
+
+  current = (current + 1) % phases.length;
+}
+showPhase();
+setInterval(showPhase, 3500);
+
+// --- Simple Gallery (placeholder images) ---
+const galleryContainer = document.getElementById('gallery');
+if (galleryContainer) {
+  const galleryTitle = document.createElement('h2');
+  galleryTitle.textContent = 'Khoảnh khắc học viên & lớp học';
+  galleryContainer.appendChild(galleryTitle);
+
+  const grid = document.createElement('div');
+  grid.className = 'gallery-grid';
+  galleryContainer.appendChild(grid);
+
+  const imgs = [
+    'https://picsum.photos/seed/live1/600/400',
+    'https://picsum.photos/seed/live2/600/400',
+    'https://picsum.photos/seed/live3/600/400',
+    'https://picsum.photos/seed/live4/600/400',
+    'https://picsum.photos/seed/live5/600/400',
+    'https://picsum.photos/seed/live6/600/400'
+  ];
+  imgs.forEach(src=>{
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = 'G Academy Livestream Class';
+    grid.appendChild(img);
+  });
+}
+
+// --- Video modal logic ---
+const playBtn = document.getElementById('playVideoBtn');
+const modal = document.getElementById('videoModal');
+const closeBtn = document.getElementById('closeVideo');
+const video = document.getElementById('heroVideo');
+
+playBtn.addEventListener('click', ()=>{
+  modal.classList.add('active');
+  video.currentTime = 0;
+  video.play();
+});
+closeBtn.addEventListener('click', ()=>{
+  modal.classList.remove('active');
+  video.pause();
+});
+modal.addEventListener('click', e=>{
+  if(e.target===modal){
+    modal.classList.remove('active');
+    video.pause();
+  }
+});
+</script>
+
+</body>
+</html>
